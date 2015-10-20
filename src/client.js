@@ -64,10 +64,11 @@ const HelloWOrldApp = React.createClass({
     return (
              <div >
                 <h1>Headeri</h1>
-                    {names.map((name) =>
-                    <HelloWorld name={name}/>
+                    {names.map((name, i) =>
+                    <HelloWorld name={name} key={i}/>
 
                )}
+                    {names}
                   <h1>Tilin saldo:</h1>
                     <div className="div1">
                         <Counterizwer
