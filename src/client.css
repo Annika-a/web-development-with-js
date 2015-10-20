@@ -1,8 +1,43 @@
 $red: rgba(255, 0, 0, 1);
 
 h1 {
-    color: $red
+   color: #dd5454;
+}
+p {
+
 }
 
+.nappula {
+    margin: 0 60px;
+    width: 200px;
+    color: #dd5454;
+    padding: 30px 10px;
+    background-color: #222;
+    border-radius:45px;
+    button{
+     padding: 15px;
+    }
+}
 
+.div1{
+color: #dd5454;
+}
 
+.div2{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+    margin: 100 90px;
+    width: 300px;
+    color: #222;
+    padding: 30px 10px;
+    background-color: #dd8989;
+    h1 {
+   color: #898989
+    }
+}
+
+.box{
+    width:10px;
+    background-color: #262626;
+}
