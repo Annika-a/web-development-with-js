@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import getTussit from './getTussit';
+import api from '../api';
 import HelloWorld from './helloworld';
 
 const Linkkipalkki = React.createClass({
@@ -12,7 +12,7 @@ const Linkkipalkki = React.createClass({
     },
 
     componentDidMount: function(){
-        getTussit().then((data) =>  {
+        api.getTussit().then((data) =>  {
                 this.setState({
                     names: data
                 });
@@ -27,6 +27,7 @@ const Linkkipalkki = React.createClass({
                     {names.map((name, i) =>
                     <HelloWorld name={name} key={i}/>)}
                     <Link to={`/counter`}> Counter</Link>
+                    <Link to={`/kartta`}> KArtta</Link>
               </div>
         );
     },
