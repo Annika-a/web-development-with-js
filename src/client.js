@@ -49,8 +49,8 @@ const HelloWOrldApp = React.createClass({
     return (
              <div >
                 <h1>Otsikko </h1>
-               <Linkkipalkki />
-                {this.props.children}
+                    <Linkkipalkki />
+                    {this.props.children}
               </div>
         );
     },
@@ -73,7 +73,6 @@ const Linkkipalkki = React.createClass({
     },
 
     render: function(){
-
     const names = this.state.names;
 
     return (
@@ -86,10 +85,7 @@ const Linkkipalkki = React.createClass({
     },
 });
 
-
-
-
-const Greeter = React.createClass({
+const GreeterPage = React.createClass({
     render: function(){
         const name = this.props.params.name;
         return (
@@ -138,7 +134,7 @@ const CounterPage = React.createClass({
 const routes = (
         <Router>
             <Route path="/" component={HelloWOrldApp}>
-            <Route path="/hello/:name" component={Greeter}></Route>
+            <Route path="/hello/:name" component={GreeterPage}></Route>
             <Route path="/counter" component={CounterPage}></Route>
             </Route>
         </Router>
