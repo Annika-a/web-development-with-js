@@ -4,7 +4,26 @@ h1 {
    color: #dd5454;
 }
 p {
+}
 
+h2{
+    color: #dd6565;
+
+}
+
+.hellopage {
+
+    background-color: #dd5454;
+    color: #999;
+    height: 200px;
+    width:300px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    font-size: 20px;
+    h1 {
+   color: #eee;
+}
 }
 
 .nappula {

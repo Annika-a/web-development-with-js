@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import { Router, Route, Link } from 'react-router';
+
 function getTussit(){
     return axios.get('/api/tussi').then((response)=>{
         return response.data;
@@ -21,7 +23,9 @@ const HelloWorld = React.createClass({
     render: function(){
     return (
         <div>
-            Hello {this.props.name}
+            <Link to={`/hello/${this.props.name}`}>
+                LInkki Hello {this.props.name}
+            </Link>
         </div>
         );
     }
@@ -41,16 +45,26 @@ const Counterizwer = React.createClass({
 });
 
 const HelloWOrldApp = React.createClass({
+    render: function(){
+    return (
+             <div >
+                <h1>Otsikko </h1>
+               <Linkkipalkki />
+                {this.props.children}
+              </div>
+        );
+    },
+});
+
+const Linkkipalkki = React.createClass({
+
     getInitialState: function(){
         return{
-            count: 0,
-            name: 'kissa',
             names: []
         };
     },
 
     componentDidMount: function(){
-
         getTussit().then((data) =>  {
                 this.setState({
                     names: data
@@ -59,30 +73,58 @@ const HelloWOrldApp = React.createClass({
     },
 
     render: function(){
+
     const names = this.state.names;
 
     return (
              <div >
-                <h1>Headeri</h1>
                     {names.map((name, i) =>
-                    <HelloWorld name={name} key={i}/>
-
-               )}
-                    {names}
-                  <h1>Tilin saldo:</h1>
-                    <div className="div1">
-                        <Counterizwer
-                      count={this.state.count}
-
-                        onincrementCounter={this.incrementCounter}/>
-                     </div>
-                     <br/>
-                      <div className="div2">
-                      <h2>Megacounter:</h2>
-                        <h1>{this.state.count}</h1>
-                     </div>
+                    <HelloWorld name={name} key={i}/>)}
+                    <Link to={`/counter`}> Counter</Link>
               </div>
         );
+    },
+});
+
+
+
+
+const Greeter = React.createClass({
+    render: function(){
+        const name = this.props.params.name;
+        return (
+            <div className="hellopage">
+                 <h1>
+                    Hello {name}
+                </h1>
+            </div>
+            );
+    }
+});
+
+const CounterPage = React.createClass({
+    getInitialState: function(){
+        return{
+            count: 0,
+        };
+    },
+
+    render: function(){
+        return(
+            <div>
+                    <h1>LAskuri:</h1>
+                        <div className="div1">
+                            <Counterizwer
+                            count={this.state.count}
+                            onincrementCounter={this.incrementCounter}/>
+                        </div>
+
+                         <div className="div2">
+                            <h2>Megacounter:</h2>
+                            <h1>{this.state.count}</h1>
+                        </div>
+            </div>
+            );
     },
 
     incrementCounter: function(){
@@ -90,6 +132,16 @@ const HelloWOrldApp = React.createClass({
             count: this.state.count + 100
         });
     },
+
 });
 
-ReactDOM.render(<HelloWOrldApp/>, document.getElementById('app'));
+const routes = (
+        <Router>
+            <Route path="/" component={HelloWOrldApp}>
+            <Route path="/hello/:name" component={Greeter}></Route>
+            <Route path="/counter" component={CounterPage}></Route>
+            </Route>
+        </Router>
+    );
+
+ReactDOM.render(routes, document.getElementById('app'));
