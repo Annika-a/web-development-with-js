@@ -23,11 +23,10 @@ const Linkkipalkki = React.createClass({
     const names = this.state.names;
 
     return (
-             <div >
-                    {names.map((name, i) =>
-                    <HelloWorld name={name} key={i}/>)}
+             <div>
+                    {names.map((name, i) =><HelloWorld name={name} key={i}/>)}
                     <Link to={`/counter`}> Counter</Link>
-                    <Link to={`/kartta`}> KArtta</Link>
+                    <Link to={`/kartta`}> KARTTA</Link>
               </div>
         );
     },

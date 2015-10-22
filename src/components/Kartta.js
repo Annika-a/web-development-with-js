@@ -1,40 +1,19 @@
 import React from 'react';
 import {PropTypes, Component} from 'react/addons';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-import joku from 'joku';
+//import joku from 'joku';
 import GoogleMap from 'google-map-react';
+//import MyGreatPlace from 'my_great_place.jsx';
 
 const Kartta = React.createClass({
     render: function(){
         return (
-            <div className="hellopage">
-                 <h1>
-                    Hello kkkk
-                </h1>
-            </div>
+                <div>tttt<SimpleMapPage/></div>
+
             );
     }
 });
 
-
-function createMapOptions(maps) {
-  // next props are exposed at maps
-  // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
-  // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
-  // "DirectionsStatus", "DirectionsTravelMode", "DirectionsUnitSystem", "DistanceMatrixStatus",
-  // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
-  // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
-  return {
-    zoomControlOptions: {
-      position: maps.ControlPosition.RIGHT_CENTER,
-      style: maps.ZoomControlStyle.SMALL
-    },
-    mapTypeControlOptions: {
-      position: maps.ControlPosition.TOP_RIGHT
-    },
-    mapTypeControl: true
-  };
-}
 
 export default class SimpleMapPage extends Component {
   static propTypes = {
@@ -57,11 +36,12 @@ export default class SimpleMapPage extends Component {
 
   render() {
     return (
-       <GoogleMap
+
+        <GoogleMap
         // apiKey={YOUR_GOOGLE_MAP_API_KEY} // set if you need stats etc ...
         center={this.props.center}
-        zoom={this.props.zoom}
-        options={createMapOptions}>
+        zoom={this.props.zoom}>
+
       </GoogleMap>
     );
   }
