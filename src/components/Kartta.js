@@ -1,50 +1,67 @@
 import React from 'react';
-import {PropTypes, Component} from 'react/addons';
-import shouldPureComponentUpdate from 'react-pure-render/function';
-//import joku from 'joku';
-import GoogleMap from 'google-map-react';
-//import MyGreatPlace from 'my_great_place.jsx';
-
+import {GoogleMap, Marker} from 'react-google-maps';
+import api from '../api';
+import WeatherInfo from './WeathwerInfo';
 const Kartta = React.createClass({
+
+    getInitialState: function(){
+        return{
+            maplatitude: 12,
+            maplongitude: 0,
+            clicklatitude: 0,
+            clicklongitude:0,
+            cityweather: "sataa"
+
+        };
+    },
+
+    _handle_map_click (event) {
+        //console.log("LAT:"+event.latLng.lat()+" LONG:"+ event.latLng.lng());
+                    let late = event.latLng.lat();
+                    const lote = event.latLng.lng();
+                    <WeatherInfo lat={late} long={lote} />
+                    console.log("w infoon LAT:"+{late}+" LONG:"+ event.latLng.lng());
+               // {this.state.cliklatitude}: 3;
+
+
+    },
+
     render: function(){
         return (
-                <div>tttt<SimpleMapPage/></div>
+            <div>
+            <WeatherInfo lat="3" long="2"/>
+            <h3>
+            long: {this.state.clicklongitude}
+            lat: {this.state.clicklatitude}
+            </h3>
+                <GoogleMap containerProps={{
+                      style: {
+                        height: "500px",
+                        width: "700px"
+                      },
+                    }}
+                    defaultZoom={3}
+                    defaultCenter={{lat: 33, lng: 15}}
+                    onClick={::this._handle_map_click}
+                    >
+                </GoogleMap>
+
+               lat: {this.state.maplatitude}
+               long: {this.state.maplongitude}
+
+
+            </div>
 
             );
-    }
+    },
+
+    incrementCounter: function(newlat){
+        this.setState({
+            clicklatitude: newlat
+        });
+    },
+
 });
 
-
-export default class SimpleMapPage extends Component {
-  static propTypes = {
-    center: PropTypes.array,
-    zoom: PropTypes.number,
-    greatPlaceCoords: PropTypes.any
-  };
-
-  static defaultProps = {
-    center: [59.938043, 30.337157],
-    zoom: 9,
-    greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
-  };
-
-  shouldComponentUpdate = shouldPureComponentUpdate;
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-
-        <GoogleMap
-        // apiKey={YOUR_GOOGLE_MAP_API_KEY} // set if you need stats etc ...
-        center={this.props.center}
-        zoom={this.props.zoom}>
-
-      </GoogleMap>
-    );
-  }
-}
 
 export default Kartta;

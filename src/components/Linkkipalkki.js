@@ -7,26 +7,26 @@ const Linkkipalkki = React.createClass({
 
     getInitialState: function(){
         return{
-            names: []
+            names2: 120,
         };
     },
 
     componentDidMount: function(){
-        api.getTussit().then((data) =>  {
+         api.getWeatherData(22,22).then((data) =>  {
                 this.setState({
-                    names: data
+                    names2: data
                 });
             });
     },
 
     render: function(){
-    const names = this.state.names;
+    const names = this.state.names2;
 
     return (
              <div>
-                    {names.map((name, i) =><HelloWorld name={name} key={i}/>)}
-                    <Link to={`/counter`}> Counter</Link>
-                    <Link to={`/kartta`}> KARTTA</Link>
+             {names}
+             <Link to={`/kartta`}>KARTTA</Link>
+             }
               </div>
         );
     },

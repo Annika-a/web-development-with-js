@@ -8,6 +8,7 @@ const HelloWOrldApp = React.createClass({
     return (
              <div >
                 <h1>Otsikko </h1>
+                <script src="https://maps.googleapis.com/maps/api/js"></script>
                     <Linkkipalkki />
                     {this.props.children}
               </div>
