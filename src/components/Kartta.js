@@ -1,57 +1,62 @@
 import React from 'react';
 import {GoogleMap, Marker} from 'react-google-maps';
 import api from '../api';
-import WeatherInfo from './WeathwerInfo';
+import weatherImg from './weatherImg';
 const Kartta = React.createClass({
 
     getInitialState: function(){
         return{
-            maplatitude: 12,
-            maplongitude: 0,
-            clicklatitude: 0,
-            clicklongitude:0,
-            cityweather: "sataa"
-
+            clicklatitude:"1",
+            clicklongitude:"2",
+            cityweather: "sataa",
+            weatherImage: "ddd"
         };
     },
 
     _handle_map_click (event) {
-        //console.log("LAT:"+event.latLng.lat()+" LONG:"+ event.latLng.lng());
-                    let late = event.latLng.lat();
-                    const lote = event.latLng.lng();
-                    <WeatherInfo lat={late} long={lote} />
-                    console.log("w infoon LAT:"+{late}+" LONG:"+ event.latLng.lng());
-               // {this.state.cliklatitude}: 3;
+                clicklatitude: event.latLng.lat();
+                licklongitude: event.latLng.lng();
+                console.log("w infoon LAT:"+event.latLng.lat()+" LONG:"+ event.latLng.lng());
+                api.getWeatherData(event.latLng.lat(),event.latLng.lng()).then((data) =>  {
+                    this.setState({
+                    cityweather: data,
+                    weatherImage: "http://users.metropolia.fi/~annikaa/img/"+data
+                });
 
-
+            });
     },
 
     render: function(){
         return (
+
+
             <div>
-            <WeatherInfo lat="3" long="2"/>
-            <h3>
-            long: {this.state.clicklongitude}
-            lat: {this.state.clicklatitude}
-            </h3>
-                <GoogleMap containerProps={{
-                      style: {
-                        height: "500px",
-                        width: "700px"
-                      },
-                    }}
-                    defaultZoom={3}
-                    defaultCenter={{lat: 33, lng: 15}}
-                    onClick={::this._handle_map_click}
-                    >
-                </GoogleMap>
+                <h3>
+                    Weather: {this.state.cityweather}<br/>
+                    <img src={this.state.weatherImage} alt={this.state.cityweather}/>
 
-               lat: {this.state.maplatitude}
-               long: {this.state.maplongitude}
+                </h3>
 
-
+                <div className="mapStyle">
+                    <GoogleMap  containerProps={{
+                          style: {
+                            height: "500px",
+                            width: "600px"
+                          },
+                        }}
+                        defaultZoom={3}
+                        maxZoom={2}
+                        defaultCenter={{lat: 33, lng: 15}}
+                        onClick={::this._handle_map_click}
+                        >
+                    </GoogleMap>
+                    Latitude: {this.state.clicklatitude}<br/>
+                    Longitude: {this.state.clicklongitude}<br/>
+                </div>
+                <div className="imagesBox">
+                        <img src={this.state.weatherImage} alt={this.state.cityweather}/>
+                </div>
             </div>
-
             );
     },
 
@@ -62,6 +67,5 @@ const Kartta = React.createClass({
     },
 
 });
-
 
 export default Kartta;

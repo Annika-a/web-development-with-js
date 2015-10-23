@@ -31,7 +31,6 @@ const CounterPage = React.createClass({
             count: this.state.count + 100
         });
     },
-
 });
 
 export default CounterPage;

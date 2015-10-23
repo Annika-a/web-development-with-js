@@ -5,7 +5,6 @@ const Counterizwer = React.createClass({
         const { count, name, onincrementCounter} = this.props;
         return (
             <div className="nappula">
-
                 <button onClick={this.props.onincrementCounter}>  Moorr  </button><br/><br/>
                 {this.props.count}
             </div>
