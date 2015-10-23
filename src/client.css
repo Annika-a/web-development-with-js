@@ -7,7 +7,7 @@ p {
 }
 
 body{
-
+    background-color: #ggffgg;
 }
 a{
 
@@ -17,19 +17,42 @@ h2{
 
 }
 
-.hellopage {
-
-    background-color: #dd5454;
-    color: #999;
-    height: 200px;
-    width:300px;
+.mapStyle{
+    width:800px;
     position: absolute;
-    left: 0px;
-    bottom: 0px;
-    font-size: 20px;
-    h1 {
-   color: #eee;
+    top:200px;
+    left:50px;
 }
+.imagesBox{
+    width:800px;
+    position: absolute;
+    top:200px;
+    left:50px;
+}
+
+.moreInfo{
+    position: absolute;
+    bottom:0;
+    right:0;
+    width:240px;
+    left:100px;
+    font-family: serif;
+    background-color: #444;
+    color: #fff;
+    height:60px;
+    padding:10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+    img {
+        position: absolute;
+        right:0;
+
+}
+}
+
+.wholePage{
+    width:100%;
 }
 
 .nappula {

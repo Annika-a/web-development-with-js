@@ -8,7 +8,7 @@ import { Router, Route, Link } from 'react-router';
 import GreeterPage from './components/GreeterPage';
 import CounterPage from './components/CounterPage';
 import HelloWOrldApp from './components/HelloWOrldApp';
-import Kartta from './components/Kartta';
+import WeatherMapPage from './components/WeatherMapPage';
 
 const num1 = [11,22];
 const num2 = num1.map(loso => 3 + loso);
@@ -23,7 +23,7 @@ const routes = (
             <Route path="/" component={HelloWOrldApp}>
                 <Route path="/hello/:name" component={GreeterPage}></Route>
                 <Route path="/counter" component={CounterPage}></Route>
-                <Route path="/kartta" component={Kartta}></Route>
+                <Route path="/WeatherMap" component={WeatherMapPage}></Route>
             </Route>
         </Router>
     );

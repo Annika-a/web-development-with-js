@@ -9,7 +9,7 @@ const Linkkipalkki = React.createClass({
 
     return (
              <div>
-             <Link to={`/kartta`}>Weather page</Link>
+             <Link to={`/WeatherMap`}>Weather page</Link>
               </div>
         );
     },
