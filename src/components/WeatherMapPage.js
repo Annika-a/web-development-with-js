@@ -69,7 +69,7 @@ const WeatherMapPage = React.createClass({
                         }}
                         defaultZoom={2}
                         defaultCenter={{lat: 33, lng: 45}}
-
+                        zoomCOntrol={0}
                         onClick={::this._handle_map_click}>
 
                         {this.state.markers.map((marker, index) => {
