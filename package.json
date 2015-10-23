@@ -52,6 +52,7 @@
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.0.1",
     "react": "^0.14.0",
+    "react-addons-update": "^0.14.0",
     "react-document-title": "^2.0.1",
     "react-dom": "^0.14.0",
     "react-google-maps": "^4.2.0",
