@@ -27,7 +27,6 @@ export default {
             dfd.resolve(data["weather"][0]["main"]);
         },
         error: function (errorData) {
-           // alert("Error while getting weather data :: " + errorData.status);
         },
     });
     return dfd.promise();

@@ -12,16 +12,15 @@ const CounterPage = React.createClass({
         return(
             <div>
                     <h1>LAskuri:</h1>
-                        <div className="div1">
-                            <Counterizwer
-                            count={this.state.count}
-                            onincrementCounter={this.incrementCounter}/>
-                        </div>
-
-                         <div className="div2">
-                            <h2>Megacounter:</h2>
-                            <h1>{this.state.count}</h1>
-                        </div>
+                    <div className="div1">
+                        <Counterizwer
+                        count={this.state.count}
+                        onincrementCounter={this.incrementCounter}/>
+                    </div>
+                    <div className="div2">
+                        <h2>Megacounter:</h2>
+                        <h1>{this.state.count}</h1>
+                    </div>
             </div>
             );
     },

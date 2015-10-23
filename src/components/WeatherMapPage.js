@@ -9,23 +9,47 @@ const WeatherMapPage = React.createClass({
             clickLatitude:"1",
             clickLongitude:"2",
             cityweather: "sataa",
-            weatherImage: "ddd"
+            weatherImage: "ddd",
+            markers: [{
+                position: {
+                lat: 25.0112183,
+                lng: 121.52067570000001,
+                },
+                key: "Taiwan",
+                defaultAnimation: 2
+                }],
+
         };
     },
 
     _handle_map_click (event) {
-                console.log("w infoon LAT:"+event.latLng.lat()+" LONG:"+ event.latLng.lng());
                 api.getWeatherData(event.latLng.lat(),event.latLng.lng()).then((data) =>  {
                     this.setState({
+
                     cityweather: data,
                     weatherImage: "http://users.metropolia.fi/~annikaa/img/"+data,
                     clickLatitude: event.latLng.lat(),
                     clickLongitude: event.latLng.lng()
                 });
 
-            });
-    },
 
+                let {markers} = this.state;
+                markers = update(markers, {
+                  $push: [
+                    {
+                      position: event.latLng,
+                      defaultAnimation: 2,
+                      key: Date.now(),// Add a key property for: http://fb.me/react-warning-keys
+                    },
+                  ],
+                });
+                this.setState({ markers });
+                console.log("MARKERS"+markers.length);
+                });
+
+    },
+    _map_click (event) {
+    },
     render: function(){
         return (
             <div className="wholePage">
@@ -40,8 +64,7 @@ const WeatherMapPage = React.createClass({
                         defaultZoom={3}
                         maxZoom={2}
                         defaultCenter={{lat: 33, lng: 15}}
-                        onClick={::this._handle_map_click}
-                        >
+                        onClick={::this._handle_map_click} >
                     </GoogleMap>
                      <div className="moreInfo">
                       <img src={this.state.weatherImage} alt={this.state.cityweather}/>
